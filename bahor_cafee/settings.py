@@ -25,9 +25,12 @@ SECRET_KEY = 'django-insecure-k9df*mk5b0$5i1248-b!la7$4xdblvt)gyl3!(o@ttsq9#^3v1
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
 
-
+ALLOWED_HOSTS = [
+    "Bahor-Kafe-BackEnd.onrender.com",
+    "localhost",
+    "127.0.0.1",
+]
 # Application definition
 
 INSTALLED_APPS = [
@@ -57,6 +60,7 @@ REST_FRAMEWORK = {
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -66,6 +70,13 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'bahor_cafee.urls'
+
+
+CORS_ALLOW_ALL_ORIGINS = True
+
+CSRF_TRUSTED_ORIGINS = [
+    "https://Bahor-Kafe-BackEnd.onrender.com",
+]
 
 TEMPLATES = [
     {
@@ -132,7 +143,12 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
-STATIC_URL = 'static/'
+STATIC_URL = '/static/'
+STATIC_ROOT = BASE_DIR / 'staticfiles'
+
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = BASE_DIR / 'media'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
